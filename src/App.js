@@ -13,32 +13,32 @@ export default App; */
 
 //using class
 import React, { Component } from "react";
+import {BrowserRouter as Router, Route} from "react-router-dom";
 import Header from "./components/layout/Header";
 import Todos from "./components/Todos";
 import AddTodo from "./components/AddTodo";
 import { v4 as uuidv4 } from 'uuid';
 import "./App.css";
 
-const myUUID = uuidv4();
 
 class App extends Component {
   state = {
     
     todos: [
       {
-        id: myUUID,
+        id: uuidv4(),//is used to generate a unique identifier for each to-do item.
         title: "Take out the trash",
         completed: false,
       },
 
       {
-        id: myUUID,
+        id: uuidv4(),
         title: "Dinner with husband",
         completed: false,
       },
 
       {
-        id: myUUID,
+        id: uuidv4(),
         title: "Meeting with boss",
         completed: false,
       },
@@ -73,7 +73,7 @@ class App extends Component {
   addTodo = (title) => {
     //console.log(title)
     const newTodo = {
-      id:myUUID,
+      id:uuidv4(),
       title,
       completed:false
     }
@@ -85,6 +85,7 @@ class App extends Component {
     //console.log(this.state.todos)
     //takes the todos in our state and passes to our Todos component as a prop
     return (
+      <Router>
       <div className="App">
         <div className="container">
           <Header />
@@ -96,6 +97,7 @@ class App extends Component {
           />
         </div>
       </div>
+      </Router>
     );
   }
 }

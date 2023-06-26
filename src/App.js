@@ -112,3 +112,39 @@ class App extends Component {
 }
 
 export default App;
+
+
+
+
+//React Router v5:
+
+
+//import { BrowserRouter as Router, Route } from 'react-router-dom';
+
+/* return (
+  <Router>
+    <div className="App">
+      <div className="container">
+        <Header />
+        
+          <Route
+            path="/"
+           render={props => (
+              <React.Fragment>
+                <AddTodo AddTodo={this.addTodo} />
+                <Todos
+                  todos={this.state.todos}
+                  markComplete={this.markComplete}
+                  delTodo={this.delTodo}
+                />
+              </React.Fragment>          
+              
+            )}
+          />
+          
+      </div>
+    </div>
+  </Router> 
+   );
+  }
+}*/

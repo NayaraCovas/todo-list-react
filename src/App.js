@@ -13,20 +13,19 @@ export default App; */
 
 //using class
 import React, { Component } from "react";
-import {BrowserRouter as Router, Route} from "react-router-dom";
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Header from "./components/layout/Header";
 import Todos from "./components/Todos";
 import AddTodo from "./components/AddTodo";
-import { v4 as uuidv4 } from 'uuid';
+import { v4 as uuidv4 } from "uuid";
 import "./App.css";
-
+import About from "./components/pages/About";
 
 class App extends Component {
   state = {
-    
     todos: [
       {
-        id: uuidv4(),//is used to generate a unique identifier for each to-do item.
+        id: uuidv4(), //is used to generate a unique identifier for each to-do item.
         title: "Take out the trash",
         completed: false,
       },
@@ -73,34 +72,43 @@ class App extends Component {
   addTodo = (title) => {
     //console.log(title)
     const newTodo = {
-      id:uuidv4(),
+      id: uuidv4(),
       title,
-      completed:false
-    }
-    this.setState({todos: [...this.state.todos, newTodo] });
-    
-  }
+      completed: false,
+    };
+    this.setState({ todos: [...this.state.todos, newTodo] });
+  };
 
   render() {
     //console.log(this.state.todos)
     //takes the todos in our state and passes to our Todos component as a prop
+    //Header component is rendered outside of the Routes component so it  will be displayed on all pages.
     return (
       <Router>
-      <div className="App">
-        <div className="container">
-          <Header />
-          <AddTodo AddTodo={this.addTodo} />
-          <Todos
-            todos={this.state.todos}
-            markComplete={this.markComplete}
-            delTodo={this.delTodo}
-          />
+        <div className="App">
+          <div className="container">
+            <Header />
+            <Routes>
+              <Route
+                path="/"
+                element={(
+                  <React.Fragment>
+                    <AddTodo AddTodo={this.addTodo} />
+                    <Todos
+                      todos={this.state.todos}
+                      markComplete={this.markComplete}
+                      delTodo={this.delTodo}
+                    />
+                  </React.Fragment>
+                )}
+              />
+              <Route path="/about" element={<About />} />
+            </Routes>
+          </div>
         </div>
-      </div>
       </Router>
     );
   }
 }
 
 export default App;
-

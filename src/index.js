@@ -1,12 +1,15 @@
 import React from 'react';//importing the library
 import ReactDOM from 'react-dom/client';//importing ReactDom
 import App from './App';//Importing main parent APP component
+import { BrowserRouter } from "react-router-dom";
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
+    
     <App />
+   
   </React.StrictMode>
 );//ReactDom renders the App component into the element with the id of root wich is in index.html
 //document.getElementById grabs <div id="root"></div> from index.html and inserts the APP component to it

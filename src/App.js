@@ -28,18 +28,21 @@ class App extends Component {
         id: uuidv4(), //is used to generate a unique identifier for each to-do item.
         title: "Take out the trash",
         completed: false,
+        desc:"after work",
       },
 
       {
         id: uuidv4(),
         title: "Dinner with husband",
         completed: false,
+        desc:"after work",
       },
 
       {
         id: uuidv4(),
         title: "Meeting with boss",
         completed: false,
+        desc:"after work",
       },
     ],
   };
@@ -69,11 +72,12 @@ class App extends Component {
 
   // Add Todo
 
-  addTodo = (title) => {
+  addTodo = (title, desc) => {
     //console.log(title)
     const newTodo = {
       id: uuidv4(),
       title,
+      desc,
       completed: false,
     };
     this.setState({ todos: [...this.state.todos, newTodo] });

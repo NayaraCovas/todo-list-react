@@ -3,16 +3,18 @@ import PropTypes from 'prop-types';
 
 export class AddTodo extends Component {
     state ={
-        title: ''
+        title: '',
+        desc: ''
     }
  
 
  onSubmit = (e) => {
     e.preventDefault();//in order to not submit to the actual file
-    this.props.AddTodo (this.state.title);
-    this.setState({title:''});
+    this.props.AddTodo (this.state.title, this.state.desc);
+    this.setState({title:'', desc: ''});
  }
  onChange = (e) => this.setState({title:e.target.value});
+ onDescChange = (e) => this.setState({desc:e.target.value});
 
   render() {
     return (
@@ -24,6 +26,14 @@ export class AddTodo extends Component {
         placeholder="Add Todo..." 
         value={this.state.title}
         onChange={this.onChange}
+        />
+        <input 
+        type="text" 
+        name="description" 
+        style={{flex:"10" , padding: "5px"}} 
+        placeholder="Add description" 
+        value={this.state.desc}
+        onChange={this.onDescChange}
         />
         <input
         type="submit" 
